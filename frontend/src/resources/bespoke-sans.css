@@ -1,0 +1,60 @@
+/**
+ * @license
+ *
+ * Font Family: Bespoke Sans
+ * Designed by: Jérémie Hornus, Théo Guillard, Morgane Pambrun, Alisa Nowak, Joachim Vu
+ * URL: https://www.fontshare.com/fonts/bespoke-sans
+ * © 2024 Indian Type Foundry
+ *
+ * Font Styles:
+ * Bespoke Sans Regular
+ * Bespoke Sans Medium
+ * Bespoke Sans Bold
+ * Bespoke Sans Extrabold         
+ *
+*/
+
+
+@font-face {
+  font-family: 'BespokeSans-Regular';
+  src: url('../assets/fonts/BespokeSans-Regular.woff2') format('woff2'),
+       url('../assets/fonts/BespokeSans-Regular.woff') format('woff'),
+       url('../assets/fonts/BespokeSans-Regular.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'BespokeSans-Medium';
+  src: url('../assets/fonts/BespokeSans-Medium.woff2') format('woff2'),
+       url('../assets/fonts/BespokeSans-Medium.woff') format('woff'),
+       url('../assets/fonts/BespokeSans-Medium.ttf') format('truetype');
+       font-weight: 500;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'BespokeSans-Bold';
+  src: url('../assets/fonts/BespokeSans-Bold.woff2') format('woff2'),
+       url('../assets/fonts/BespokeSans-Bold.woff') format('woff'),
+       url('../assets/fonts/BespokeSans-Bold.ttf') format('truetype');
+       font-weight: 700;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'BespokeSans-Extrabold';
+  src: url('../assets/fonts/BespokeSans-Extrabold.woff2') format('woff2'),
+       url('../assets/fonts/BespokeSans-Extrabold.woff') format('woff'),
+       url('../assets/fonts/BespokeSans-Extrabold.ttf') format('truetype');
+       font-weight: 800;
+       font-display: swap;
+       font-style: normal;
+}
+

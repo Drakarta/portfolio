@@ -1,0 +1,13 @@
+@import url("bespoke-sans.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 241, 230);
+    font-family: "system-ui", sans-serif;
+}
+
+.bespoke-sans {
+    font-family: "BespokeSans-Regular", sans-serif;
+}

@@ -1,0 +1,76 @@
+---
+import { $isMobile } from "../resources/store.ts";
+
+import Layout from "../layouts/Layout.astro";
+import HomeSection from "../components/sections/HomeSection.tsx";
+---
+
+<Layout title="Anthony">
+	<script>
+		type ArrowKey = "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight";
+
+		const code: ArrowKey[] = [
+			"ArrowUp",
+			"ArrowUp",
+			"ArrowDown",
+			"ArrowDown",
+			"ArrowLeft",
+			"ArrowRight",
+			"ArrowLeft",
+			"ArrowRight",
+		];
+		let pressed: ArrowKey[] = [];
+
+		const handleKeyPress = (event: { key: string }) => {
+			if (code.includes(event.key as ArrowKey)) {
+				if (code[pressed.length] === event.key) {
+					pressed.push(event.key);
+					console.log(pressed);
+				} else {
+					pressed = [];
+				}
+				if (pressed.length === code.length) {
+					window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+				}
+			} else {
+				pressed = [];
+			}
+		};
+
+		let StartX: number = 0;
+		let StartY: number = 0;
+		const handleSwipeStart = (event: TouchEvent) => {
+			StartX = event.changedTouches[0].screenX;
+			StartY = event.changedTouches[0].screenY;
+		};
+		const handleSwipeEnd = (event: TouchEvent) => {
+			const diffY: number = event.changedTouches[0].screenY - StartY;
+			const diffX: number = event.changedTouches[0].screenX - StartX;
+			if (Math.abs(diffX) > Math.abs(diffY)) {
+				if (diffX > 0) {
+					handleKeyPress({ key: "ArrowRight" } as KeyboardEvent);
+				}
+				if (diffX < 0) {
+					handleKeyPress({ key: "ArrowLeft" } as KeyboardEvent);
+				}
+			} else {
+				if (diffY > 0) {
+					handleKeyPress({ key: "ArrowDown" } as KeyboardEvent);
+				}
+				if (diffY < 0) {
+					handleKeyPress({ key: "ArrowUp" } as KeyboardEvent);
+				}
+				if (diffY === 0) {
+					handleKeyPress({ key: "ArrowUp" } as KeyboardEvent);
+				}
+			}
+		};
+
+		window.addEventListener("keydown", handleKeyPress);
+		window.addEventListener("touchstart", handleSwipeStart);
+		window.addEventListener("touchend", handleSwipeEnd);
+	</script>
+	<HomeSection client:load />
+	<div class="h-screen"></div>
+	<div class="h-screen"></div>
+</Layout>

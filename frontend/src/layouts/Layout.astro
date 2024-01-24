@@ -1,0 +1,38 @@
+---
+import LoadingPage from "../components/LoadingPage.astro";
+
+import "../resources/global.css";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/moon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>🐜🍯| {title}</title>
+	</head>
+	<body style="background-color: #0f0f14;">
+		<slot />
+	</body>
+	<script>
+		import { $isMobile } from "../resources/store";
+
+		$isMobile.set(window.innerWidth < 768);
+		window.addEventListener("resize", () => {
+			if (window.innerWidth < 768) {
+				$isMobile.set(true);
+			} else {
+				$isMobile.set(false);
+			}
+		});
+	</script>
+</html>
