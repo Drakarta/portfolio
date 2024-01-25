@@ -22,7 +22,7 @@ function HomeSection() {
 	return (
 		<>
 			{isMobile ? (
-				<div className="grid h-screen grid-cols-3 grid-rows-9">
+				<div className="grid h-svh grid-cols-3 grid-rows-9">
 					<div
 						className="col-start-1 col-end-4 row-start-5 flex cursor-pointer justify-center"
 						onClick={() => {
