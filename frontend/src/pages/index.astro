@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HomeSection from "../components/sections/HomeSection.tsx";
+import HomeSectionMobile from "../components/sections/HomeSectionMobile.tsx";
+import ScrollIndicator from "../components/ScrollIndicator.tsx";
 ---
 
 <Layout title="Anthony">
@@ -68,7 +70,15 @@ import HomeSection from "../components/sections/HomeSection.tsx";
 		window.addEventListener("touchstart", handleSwipeStart);
 		window.addEventListener("touchend", handleSwipeEnd);
 	</script>
-	<HomeSection client:load />
-	<div class="h-screen bg-slate-600"></div>
-	<div class="h-screen"></div>w
+	<section>
+		<div class="hidden md:block">
+			<HomeSection client:load />
+		</div>
+		<div class="block md:hidden">
+			<HomeSectionMobile clien:load />
+		</div>
+		<ScrollIndicator client:idle />
+	</section>
+	<section class="h-screen bg-slate-600"></section>
+	<section class="h-screen"></section>
 </Layout>
