@@ -23,7 +23,7 @@ function ScrollIndicator() {
 
 	return (
 		<motion.div
-			className="absolute -right-4 bottom-10 flex rotate-90 transform gap-4 text-lg opacity-30"
+			className="absolute -right-4 bottom-11 flex rotate-90 transform gap-4 text-lg opacity-30"
 			style={{ filter: "drop-shadow(2px 2px 4px black)" }}
 			initial={false}
 			animate={scrolled ? { bottom: "-80px" } : "initial"}

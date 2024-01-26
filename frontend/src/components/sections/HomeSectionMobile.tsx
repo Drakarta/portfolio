@@ -18,7 +18,7 @@ function HomeSectionMobile() {
 				className="col-start-1 col-end-4 row-start-5 flex cursor-pointer justify-center"
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
-					$firstActivate.set(false);
+					$firstActivate.set(true);
 				}}
 			>
 				<img
@@ -47,7 +47,6 @@ function HomeSectionMobile() {
 			<motion.div
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
-					console.log("click");
 				}}
 				className="relative col-start-1 col-end-4 row-start-6 row-end-8 m-2 flex max-h-20 w-fit cursor-pointer justify-center justify-self-center overflow-hidden px-1.5 text-6xl"
 				style={{ lineHeight: "normal", letterSpacing: "-0.025em" }}
