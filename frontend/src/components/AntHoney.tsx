@@ -8,12 +8,12 @@ import honey from "../assets/honey_pot_flat.svg";
 
 let timout: NodeJS.Timeout;
 
-function Anthoney() {
+export default function Anthoney() {
 	const nameActive = useStore($nameActive);
 
 	return (
 		<div
-			className="flex cursor-pointer text-9xl"
+			className="text-primary flex cursor-pointer text-9xl"
 			style={{
 				lineHeight: "normal",
 				letterSpacing: "-0.05em",
@@ -117,5 +117,3 @@ function Anthoney() {
 		</div>
 	);
 }
-
-export default Anthoney;

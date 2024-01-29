@@ -6,7 +6,7 @@ import { $scrolled } from "../resources/store.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
-function ScrollIndicator() {
+export default function ScrollIndicator() {
 	const scrolled = useStore($scrolled);
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ function ScrollIndicator() {
 
 	return (
 		<motion.div
-			className="absolute -right-4 bottom-11 flex rotate-90 transform gap-4 text-lg opacity-30"
+			className="text-faded absolute -right-4 bottom-11 flex rotate-90 transform gap-4 text-lg"
 			style={{ filter: "drop-shadow(2px 2px 4px black)" }}
 			initial={false}
 			animate={scrolled ? { bottom: "-80px" } : "initial"}
@@ -36,5 +36,3 @@ function ScrollIndicator() {
 		</motion.div>
 	);
 }
-
-export default ScrollIndicator;

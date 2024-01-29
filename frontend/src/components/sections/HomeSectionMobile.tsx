@@ -8,12 +8,12 @@ import { faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
 import ant from "../../assets/ant_flat.svg";
 import honey from "../../assets/honey_pot_flat.svg";
 
-function HomeSectionMobile() {
+export default function HomeSectionMobile() {
 	const nameActiveMobile = useStore($nameActiveMobile);
 	const firstActivate = useStore($firstActivate);
 
 	return (
-		<div className="grid h-svh grid-cols-3 grid-rows-9">
+		<div id="4" className="grid h-svh grid-cols-3 grid-rows-9">
 			<div
 				className="col-start-1 col-end-4 row-start-5 flex cursor-pointer justify-center"
 				onClick={() => {
@@ -35,7 +35,7 @@ function HomeSectionMobile() {
 				/>
 			</div>
 			<motion.div
-				className="pointer-events-none relative top-6 col-start-2 row-start-6 flex justify-center gap-4 text-lg opacity-30"
+				className="faded pointer-events-none relative top-6 col-start-2 row-start-6 flex justify-center gap-4 text-lg"
 				style={{ filter: "drop-shadow(1px 1px 2px black)" }}
 				initial={false}
 				animate={firstActivate ? { opacity: 0 } : "initial"}
@@ -61,7 +61,7 @@ function HomeSectionMobile() {
 					Anthon
 				</div>
 				<motion.div
-					className="bespoke-sans"
+					className="bespoke-sans text-primary"
 					style={{ filter: "drop-shadow(3px 3px 5px black" }}
 					initial={false}
 					animate={
@@ -91,5 +91,3 @@ function HomeSectionMobile() {
 		</div>
 	);
 }
-
-export default HomeSectionMobile;

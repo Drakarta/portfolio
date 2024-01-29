@@ -6,12 +6,12 @@ import { $firstActivate } from "../resources/store.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
 
-function nameHoverTooltip() {
+export default function nameHoverTooltip() {
 	const firstActivate = useStore($firstActivate);
 
 	return (
 		<motion.div
-			className="pointer-events-none relative -top-6 flex w-auto content-center gap-4 text-lg opacity-30"
+			className="text-faded pointer-events-none relative -top-6 flex w-auto content-center gap-4 text-lg"
 			style={{ filter: "drop-shadow(1px 1px 2px black)" }}
 			initial={false}
 			animate={firstActivate ? { opacity: 0 } : "initial"}
@@ -22,5 +22,3 @@ function nameHoverTooltip() {
 		</motion.div>
 	);
 }
-
-export default nameHoverTooltip;

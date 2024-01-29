@@ -1,12 +1,9 @@
 @import url("bespoke-sans.css");
 
-
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgb(255, 241, 230);
     font-family: "system-ui", sans-serif;
 }
 
@@ -16,4 +13,12 @@
 
 .bg-primary {
     background-color: #0f0f14;
+}
+
+.text-primary {
+    color: #fff1e6;
+}
+
+.text-faded {
+    color: #575353;
 }

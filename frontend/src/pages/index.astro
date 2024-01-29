@@ -3,9 +3,28 @@ import Layout from "../layouts/Layout.astro";
 import HomeSection from "../components/sections/HomeSection.tsx";
 import HomeSectionMobile from "../components/sections/HomeSectionMobile.tsx";
 import ScrollIndicator from "../components/ScrollIndicator.tsx";
+import SecondSection from "../components/sections/SecondSection.tsx";
 ---
 
 <Layout title="Anthony">
+	<style>
+		@media (min-width: 768px) {
+			.buffer {
+				top: 50%;
+			}
+		}
+		.buffer {
+			top: 37vh;
+		}
+		@media (min-width: 768px) {
+			.buffer2 {
+				margin-top: -50%;
+			}
+		}
+		.buffer2 {
+			margin-top: -34vh;
+		}
+	</style>
 	<script>
 		type ArrowKey = "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight";
 
@@ -66,19 +85,66 @@ import ScrollIndicator from "../components/ScrollIndicator.tsx";
 			}
 		};
 
+		const handleScroll = () => {
+			const element = document.getElementById("1");
+			if (!element) return;
+
+			if (window.innerWidth > 768) {
+				if (window.scrollY > window.innerHeight) {
+					element.classList.remove("fixed", "buffer2");
+					element.classList.add("absolute");
+				} else if (window.scrollY > window.innerHeight * 0.71) {
+					console.log(`520 = ${520 / window.innerHeight}`);
+					element.classList.add("fixed", "buffer2");
+					element.classList.remove("absolute", "buffer");
+				} else if (window.scrollY > window.innerHeight * 0.37) {
+					console.log(`270 = ${270 / window.innerHeight}`);
+					element.classList.remove("fixed", "buffer2");
+					element.classList.add("absolute", "buffer");
+				} else if (window.scrollY > 0) {
+					element.classList.add("fixed");
+					element.classList.remove("absolute", "buffer");
+				}
+			} else if (window.innerWidth < 7680) {
+				if (window.scrollY > window.innerHeight) {
+					element.classList.remove("fixed");
+					element.classList.add("absolute");
+					element.classList.remove("buffer2");
+				} else if (window.scrollY > 500) {
+					element.classList.add("fixed");
+					element.classList.remove("absolute");
+					element.classList.remove("buffer");
+					element.classList.add("buffer2");
+				} else if (window.scrollY > 250) {
+					element.classList.remove("fixed");
+					element.classList.add("absolute");
+					element.classList.add("buffer");
+					element.classList.remove("buffer2");
+				} else if (window.scrollY > 0) {
+					element.classList.add("fixed");
+					element.classList.remove("absolute");
+					element.classList.remove("buffer");
+				}
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("keydown", handleKeyPress);
 		window.addEventListener("touchstart", handleSwipeStart);
 		window.addEventListener("touchend", handleSwipeEnd);
 	</script>
-	<section>
+	<section id="1" class="fixed w-full">
 		<div class="hidden md:block">
 			<HomeSection client:load />
 		</div>
 		<div class="block md:hidden">
 			<HomeSectionMobile client:load />
 		</div>
-		<ScrollIndicator client:idle />
 	</section>
-	<section class="h-screen bg-slate-600"></section>
+	<ScrollIndicator client:idle />
+	<div class="h-screen"></div>
+	<section class="relative h-screen bg-slate-600">
+		<SecondSection client:idle />
+	</section>
 	<section class="h-screen"></section>
 </Layout>
