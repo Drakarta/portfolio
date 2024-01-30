@@ -13,29 +13,30 @@ export default function HomeSectionMobile() {
 	const firstActivate = useStore($firstActivate);
 
 	return (
-		<div id="4" className="grid h-svh grid-cols-3 grid-rows-9">
+		<div className="flex h-svh flex-col items-center justify-center">
 			<div
-				className="col-start-1 col-end-4 row-start-5 flex cursor-pointer justify-center"
+				className="flex cursor-pointer justify-center"
+				style={{ height: "148px" }}
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
 					$firstActivate.set(true);
 				}}
 			>
 				<img
-					className="-my-4 aspect-square w-32"
+					className="mt-3 aspect-square w-32"
 					style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 					src={ant.src}
 					alt="ant"
 				/>
 				<img
-					className="-my-4 aspect-square w-32"
+					className="mt-3 aspect-square w-32"
 					style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 					src={honey.src}
 					alt="honey_pot"
 				/>
 			</div>
 			<motion.div
-				className="faded pointer-events-none relative top-6 col-start-2 row-start-6 flex justify-center gap-4 text-lg"
+				className="text-faded pointer-events-none absolute col-start-2 row-start-6 mt-48 flex justify-center gap-4 text-lg"
 				style={{ filter: "drop-shadow(1px 1px 2px black)" }}
 				initial={false}
 				animate={firstActivate ? { opacity: 0 } : "initial"}
@@ -48,20 +49,20 @@ export default function HomeSectionMobile() {
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
 				}}
-				className="relative col-start-1 col-end-4 row-start-6 row-end-8 m-2 flex max-h-20 w-fit cursor-pointer justify-center justify-self-center overflow-hidden px-1.5 text-6xl"
-				style={{ lineHeight: "normal", letterSpacing: "-0.025em" }}
+				className="text-primary absolute mt-52 flex max-h-20 w-fit cursor-pointer justify-center justify-self-center overflow-hidden px-1.5 text-6xl"
+				style={{ lineHeight: "normal" }}
 				initial={{ height: "0px" }}
 				animate={nameActiveMobile ? { height: "auto" } : "initial"}
 				transition={{ duration: 0.5, ease: "easeInOut" }}
 			>
 				<div
-					className="bespoke-sans"
+					className="bespoke-sans text-primary"
 					style={{ filter: "drop-shadow(3px 3px 5px black" }}
 				>
 					Anthon
 				</div>
 				<motion.div
-					className="bespoke-sans text-primary"
+					className="bespoke-sans"
 					style={{ filter: "drop-shadow(3px 3px 5px black" }}
 					initial={false}
 					animate={
@@ -82,7 +83,7 @@ export default function HomeSectionMobile() {
 					e
 				</motion.div>
 				<div
-					className="bespoke-sans"
+					className="bespoke-sans text-primary"
 					style={{ filter: "drop-shadow(3px 3px 5px black" }}
 				>
 					y

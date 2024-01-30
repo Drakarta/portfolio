@@ -8,21 +8,17 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 
 <Layout title="Anthony">
 	<style>
-		@media (min-width: 768px) {
-			.buffer {
-				top: 50%;
+		.buffer-top {
+			top: calc(-50vh + 102px);
+			@media (max-width: 768px) {
+				top: calc(-50vh + 74px);
 			}
 		}
-		.buffer {
-			top: 37vh;
-		}
-		@media (min-width: 768px) {
-			.buffer2 {
-				margin-top: -50%;
+		.buffer-bottom {
+			top: calc(50vh - 102px);
+			@media (max-width: 768px) {
+				top: calc(50vh - 74px);
 			}
-		}
-		.buffer2 {
-			margin-top: -34vh;
 		}
 	</style>
 	<script>
@@ -86,44 +82,37 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 		};
 
 		const handleScroll = () => {
-			const element = document.getElementById("1");
+			const element = document.getElementById("home");
 			if (!element) return;
 
 			if (window.innerWidth > 768) {
 				if (window.scrollY > window.innerHeight) {
-					element.classList.remove("fixed", "buffer2");
+					element.classList.remove("fixed", "buffer-top");
 					element.classList.add("absolute");
-				} else if (window.scrollY > window.innerHeight * 0.71) {
-					console.log(`520 = ${520 / window.innerHeight}`);
-					element.classList.add("fixed", "buffer2");
-					element.classList.remove("absolute", "buffer");
-				} else if (window.scrollY > window.innerHeight * 0.37) {
+				} else if (window.scrollY > window.innerHeight - 204) {
+					element.classList.add("fixed", "buffer-top");
+					element.classList.remove("absolute", "buffer-bottom");
+				} else if (window.scrollY > window.innerHeight * 0.5 - 102) {
 					console.log(`270 = ${270 / window.innerHeight}`);
-					element.classList.remove("fixed", "buffer2");
-					element.classList.add("absolute", "buffer");
+					element.classList.remove("fixed", "buffer-top");
+					element.classList.add("absolute", "buffer-bottom");
 				} else if (window.scrollY > 0) {
 					element.classList.add("fixed");
-					element.classList.remove("absolute", "buffer");
+					element.classList.remove("absolute", "buffer-bottom");
 				}
-			} else if (window.innerWidth < 7680) {
+			} else if (window.innerWidth < 768) {
 				if (window.scrollY > window.innerHeight) {
-					element.classList.remove("fixed");
+					element.classList.remove("fixed", "buffer-top");
 					element.classList.add("absolute");
-					element.classList.remove("buffer2");
-				} else if (window.scrollY > 500) {
-					element.classList.add("fixed");
-					element.classList.remove("absolute");
-					element.classList.remove("buffer");
-					element.classList.add("buffer2");
-				} else if (window.scrollY > 250) {
-					element.classList.remove("fixed");
-					element.classList.add("absolute");
-					element.classList.add("buffer");
-					element.classList.remove("buffer2");
+				} else if (window.scrollY > window.innerHeight - 148) {
+					element.classList.add("fixed", "buffer-top");
+					element.classList.remove("absolute", "buffer-bottom");
+				} else if (window.scrollY > window.innerHeight * 0.5 - 74) {
+					element.classList.remove("fixed", "buffer-top");
+					element.classList.add("absolute", "buffer-bottom");
 				} else if (window.scrollY > 0) {
 					element.classList.add("fixed");
-					element.classList.remove("absolute");
-					element.classList.remove("buffer");
+					element.classList.remove("absolute", "buffer-bottom");
 				}
 			}
 		};
@@ -133,7 +122,7 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 		window.addEventListener("touchstart", handleSwipeStart);
 		window.addEventListener("touchend", handleSwipeEnd);
 	</script>
-	<section id="1" class="fixed w-full">
+	<section id="home" class="fixed w-full">
 		<div class="hidden md:block">
 			<HomeSection client:load />
 		</div>
@@ -141,9 +130,10 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 			<HomeSectionMobile client:load />
 		</div>
 	</section>
-	<ScrollIndicator client:idle />
+	<!-- Buffer so the scrolling works as intended -->
 	<div class="h-screen"></div>
-	<section class="relative h-screen bg-slate-600">
+	<ScrollIndicator client:idle />
+	<section id="second" class="relative h-screen bg-slate-600">
 		<SecondSection client:idle />
 	</section>
 	<section class="h-screen"></section>

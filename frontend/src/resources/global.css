@@ -7,10 +7,6 @@
     font-family: "system-ui", sans-serif;
 }
 
-.bespoke-sans {
-    font-family: "BespokeSans-Regular", sans-serif;
-}
-
 .bg-primary {
     background-color: #0f0f14;
 }
@@ -21,4 +17,8 @@
 
 .text-faded {
     color: #575353;
+}
+
+.bespoke-sans {
+    font-family: "Bespoke Sans", sans-serif;
 }

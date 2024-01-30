@@ -11,13 +11,13 @@ export default function nameHoverTooltip() {
 
 	return (
 		<motion.div
-			className="text-faded pointer-events-none relative -top-6 flex w-auto content-center gap-4 text-lg"
-			style={{ filter: "drop-shadow(1px 1px 2px black)" }}
+			className="text-faded pointer-events-none absolute flex w-auto content-center gap-4 text-lg"
+			style={{ filter: "drop-shadow(1px 1px 2px black)", marginTop: "11rem" }}
 			initial={false}
 			animate={firstActivate ? { opacity: 0 } : "initial"}
 		>
 			<FontAwesomeIcon icon={faArrowUpLong} />
-			<div>Hover</div>
+			<div className="system-ui">Hover</div>
 			<FontAwesomeIcon icon={faArrowUpLong} />
 		</motion.div>
 	);

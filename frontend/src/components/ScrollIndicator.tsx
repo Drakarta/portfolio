@@ -29,7 +29,7 @@ export default function ScrollIndicator() {
 			animate={scrolled ? { bottom: "-80px" } : "initial"}
 			transition={{ duration: 0.75, ease: "easeInOut" }}
 		>
-			<div>Scroll</div>
+			<div className="system-ui">Scroll</div>
 			<div className="flex h-7 flex-col justify-center">
 				<FontAwesomeIcon icon={faArrowRightLong} />
 			</div>
