@@ -11,13 +11,13 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 		.buffer-top {
 			top: calc(-50vh + 102px);
 			@media (max-width: 768px) {
-				top: calc(-50vh + 74px);
+				top: calc(-50svh + 74px);
 			}
 		}
 		.buffer-bottom {
 			top: calc(50vh - 102px);
 			@media (max-width: 768px) {
-				top: calc(50vh - 74px);
+				top: calc(50svh - 74px);
 			}
 		}
 	</style>
@@ -37,83 +37,56 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 		let pressed: ArrowKey[] = [];
 
 		const handleKeyPress = (event: { key: string }) => {
-			if (code.includes(event.key as ArrowKey)) {
-				if (code[pressed.length] === event.key) {
-					pressed.push(event.key);
-					console.log(pressed);
-				} else {
-					pressed = [];
-				}
+			const pressedKey = event.key as ArrowKey;
+			if (code[pressed.length] === pressedKey) {
+				pressed.push(pressedKey);
 				if (pressed.length === code.length) {
 					window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+					pressed = [];
 				}
 			} else {
 				pressed = [];
 			}
 		};
 
-		let StartX: number = 0;
-		let StartY: number = 0;
+		let startX: number = 0;
+		let startY: number = 0;
 		const handleSwipeStart = (event: TouchEvent) => {
-			StartX = event.changedTouches[0].screenX;
-			StartY = event.changedTouches[0].screenY;
+			startX = event.changedTouches[0].screenX;
+			startY = event.changedTouches[0].screenY;
 		};
 		const handleSwipeEnd = (event: TouchEvent) => {
-			const diffY: number = event.changedTouches[0].screenY - StartY;
-			const diffX: number = event.changedTouches[0].screenX - StartX;
+			const diffX: number = event.changedTouches[0].screenX - startX;
+			const diffY: number = event.changedTouches[0].screenY - startY;
+
 			if (Math.abs(diffX) > Math.abs(diffY)) {
-				if (diffX > 0) {
-					handleKeyPress({ key: "ArrowRight" } as KeyboardEvent);
-				}
-				if (diffX < 0) {
-					handleKeyPress({ key: "ArrowLeft" } as KeyboardEvent);
-				}
+				handleKeyPress({
+					key: diffX > 0 ? "ArrowRight" : "ArrowLeft",
+				} as KeyboardEvent);
 			} else {
-				if (diffY > 0) {
-					handleKeyPress({ key: "ArrowDown" } as KeyboardEvent);
-				}
-				if (diffY < 0) {
-					handleKeyPress({ key: "ArrowUp" } as KeyboardEvent);
-				}
-				if (diffY === 0) {
-					handleKeyPress({ key: "ArrowUp" } as KeyboardEvent);
-				}
+				handleKeyPress({
+					key: diffY > 0 ? "ArrowDown" : "ArrowUp",
+				} as KeyboardEvent);
 			}
 		};
 
 		const handleScroll = () => {
 			const element = document.getElementById("home");
+			const iconHeight = window.innerWidth > 768 ? 204 : 148;
 			if (!element) return;
 
-			if (window.innerWidth > 768) {
-				if (window.scrollY > window.innerHeight) {
-					element.classList.remove("fixed", "buffer-top");
-					element.classList.add("absolute");
-				} else if (window.scrollY > window.innerHeight - 204) {
-					element.classList.add("fixed", "buffer-top");
-					element.classList.remove("absolute", "buffer-bottom");
-				} else if (window.scrollY > window.innerHeight * 0.5 - 102) {
-					console.log(`270 = ${270 / window.innerHeight}`);
-					element.classList.remove("fixed", "buffer-top");
-					element.classList.add("absolute", "buffer-bottom");
-				} else if (window.scrollY > 0) {
-					element.classList.add("fixed");
-					element.classList.remove("absolute", "buffer-bottom");
-				}
-			} else if (window.innerWidth < 768) {
-				if (window.scrollY > window.innerHeight) {
-					element.classList.remove("fixed", "buffer-top");
-					element.classList.add("absolute");
-				} else if (window.scrollY > window.innerHeight - 148) {
-					element.classList.add("fixed", "buffer-top");
-					element.classList.remove("absolute", "buffer-bottom");
-				} else if (window.scrollY > window.innerHeight * 0.5 - 74) {
-					element.classList.remove("fixed", "buffer-top");
-					element.classList.add("absolute", "buffer-bottom");
-				} else if (window.scrollY > 0) {
-					element.classList.add("fixed");
-					element.classList.remove("absolute", "buffer-bottom");
-				}
+			if (window.scrollY > window.innerHeight) {
+				element.classList.remove("fixed", "buffer-top");
+				element.classList.add("absolute");
+			} else if (window.scrollY > window.innerHeight - iconHeight) {
+				element.classList.remove("absolute", "buffer-bottom");
+				element.classList.add("fixed", "buffer-top");
+			} else if (window.scrollY > window.innerHeight * 0.5 - iconHeight / 2) {
+				element.classList.remove("fixed");
+				element.classList.add("absolute", "buffer-bottom");
+			} else {
+				element.classList.remove("absolute", "buffer-bottom", "buffer-top");
+				element.classList.add("fixed");
 			}
 		};
 

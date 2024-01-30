@@ -50,7 +50,7 @@ export default function HomeSectionMobile() {
 					$nameActiveMobile.set(!nameActiveMobile);
 				}}
 				className="text-primary absolute mt-52 flex max-h-20 w-fit cursor-pointer justify-center justify-self-center overflow-hidden px-1.5 text-6xl"
-				style={{ lineHeight: "normal" }}
+				style={{ lineHeight: "normal", letterSpacing: "-0.025em" }}
 				initial={{ height: "0px" }}
 				animate={nameActiveMobile ? { height: "auto" } : "initial"}
 				transition={{ duration: 0.5, ease: "easeInOut" }}
