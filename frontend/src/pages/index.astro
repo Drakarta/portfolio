@@ -9,13 +9,13 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 <Layout title="Anthony">
 	<style>
 		.buffer-top {
-			top: calc(-50vh + 102px);
+			top: calc(-50svh + 102px);
 			@media (max-width: 768px) {
 				top: calc(-50svh + 74px);
 			}
 		}
 		.buffer-bottom {
-			top: calc(50vh - 102px);
+			top: calc(50svh - 102px);
 			@media (max-width: 768px) {
 				top: calc(50svh - 74px);
 			}
@@ -72,16 +72,18 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 
 		const handleScroll = () => {
 			const element = document.getElementById("home");
+			// window.innerHeight on mobile changes when the menu is visible
+			const smallHeight: any = document.getElementById("svh")?.clientHeight;
 			const iconHeight = window.innerWidth > 768 ? 204 : 148;
 			if (!element) return;
 
 			if (window.scrollY > window.innerHeight) {
 				element.classList.remove("fixed", "buffer-top");
 				element.classList.add("absolute");
-			} else if (window.scrollY > window.innerHeight - iconHeight) {
+			} else if (window.scrollY > smallHeight - iconHeight) {
 				element.classList.remove("absolute", "buffer-bottom");
 				element.classList.add("fixed", "buffer-top");
-			} else if (window.scrollY > window.innerHeight * 0.5 - iconHeight / 2) {
+			} else if (window.scrollY > smallHeight * 0.5 - iconHeight / 2) {
 				element.classList.remove("fixed");
 				element.classList.add("absolute", "buffer-bottom");
 			} else {
@@ -104,7 +106,7 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 		</div>
 	</section>
 	<!-- Buffer so the scrolling works as intended -->
-	<div class="h-screen"></div>
+	<div id="svh" class="h-svh"></div>
 	<ScrollIndicator client:idle />
 	<section id="second" class="relative h-screen bg-slate-600">
 		<SecondSection client:idle />
