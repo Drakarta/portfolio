@@ -12,8 +12,8 @@ export default function Anthoney() {
 	const nameActive = useStore($nameActive);
 
 	return (
-		<div
-			className="text-primary flex cursor-pointer text-9xl"
+		<button
+			className="flex cursor-pointer font-bespoke text-9xl text-secondary"
 			style={{
 				lineHeight: "normal",
 				letterSpacing: "-0.05em",
@@ -46,7 +46,6 @@ export default function Anthoney() {
 					/>
 				</motion.div>
 				<motion.div
-					className="bespoke-sans"
 					style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 					initial={{ width: "0rem", x: "0.5rem" }}
 					animate={
@@ -79,14 +78,8 @@ export default function Anthoney() {
 					animate={nameActive ? { width: "auto" } : "initial"}
 					transition={{ duration: 0.5, ease: "easeInOut" }}
 				>
-					<div
-						className="bespoke-sans"
-						style={{ filter: "drop-shadow(3px 3px 5px black)" }}
-					>
-						hon
-					</div>
+					<div style={{ filter: "drop-shadow(3px 3px 5px black)" }}>hon</div>
 					<motion.div
-						className="bespoke-sans"
 						style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 						initial={false}
 						animate={
@@ -106,14 +99,9 @@ export default function Anthoney() {
 					>
 						e
 					</motion.div>
-					<div
-						className="bespoke-sans"
-						style={{ filter: "drop-shadow(3px 3px 5px black)" }}
-					>
-						y
-					</div>
+					<div style={{ filter: "drop-shadow(3px 3px 5px black)" }}>y</div>
 				</motion.div>
 			</div>
-		</div>
+		</button>
 	);
 }

@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import pengu from "../assets/pengu.png";
+---
+
+<Layout title="Valentines" description="" bodyClass="bg-pink">
+	<div
+		id="Container"
+		class="flex h-svh w-full flex-col items-center justify-center"
+	>
+		<div class="w-max font-dancing text-6xl drop-shadow-md">
+			Will you be my Valentines?
+		</div>
+		<div class="-mb-20 -mt-12 w-96"><img src={pengu.src} alt="pengu" /></div>
+		<div class="flex justify-center gap-8">
+			<button
+				id="Yes"
+				class="4 absolute m-8 h-14 w-24 rounded-md bg-pink2 p-3 font-bespoke text-2xl shadow-md"
+				style="right: 50vw;">Yes</button
+			>
+			<div id="No" class="absolute p-8" style="left: 50vw;">
+				<button
+					class="w-24 rounded-md bg-pink2 p-3 font-bespoke text-2xl shadow-md"
+					>No</button
+				>
+			</div>
+		</div>
+	</div>
+	<script>
+		const width = document.getElementById("Container")?.clientWidth;
+		const height = document.getElementById("Container")?.clientHeight;
+		const no = document.getElementById("No");
+		no?.addEventListener("mouseenter", () => {
+			if (height) {
+				no.style.top = `${Math.random() * (height - (no.clientHeight + 64))}px`;
+			}
+			if (width) {
+				no.style.left = `${Math.random() * (width - (no.clientWidth + 64))}px`;
+			}
+		});
+		const yes = document.getElementById("Yes");
+	</script>
+</Layout>

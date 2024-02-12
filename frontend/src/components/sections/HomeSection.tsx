@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import AntHoney from "../AntHoney";
 import NameHoverIndicator from "../NameHoverIndicator";

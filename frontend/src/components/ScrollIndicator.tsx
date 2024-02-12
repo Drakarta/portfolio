@@ -23,13 +23,13 @@ export default function ScrollIndicator() {
 
 	return (
 		<motion.div
-			className="text-faded absolute -right-4 bottom-11 flex rotate-90 transform gap-4 text-lg"
+			className="absolute -right-4 bottom-11 flex rotate-90 transform gap-4 font-sans text-lg text-tetriary"
 			style={{ filter: "drop-shadow(2px 2px 4px black)" }}
 			initial={false}
 			animate={scrolled ? { bottom: "-80px" } : "initial"}
 			transition={{ duration: 0.75, ease: "easeInOut" }}
 		>
-			<div className="system-ui">Scroll</div>
+			<div>Scroll</div>
 			<div className="flex h-7 flex-col justify-center">
 				<FontAwesomeIcon icon={faArrowRightLong} />
 			</div>

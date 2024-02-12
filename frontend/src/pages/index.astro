@@ -3,10 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import HomeSection from "../components/sections/HomeSection.tsx";
 import HomeSectionMobile from "../components/sections/HomeSectionMobile.tsx";
 import ScrollIndicator from "../components/ScrollIndicator.tsx";
-import SecondSection from "../components/sections/SecondSection.tsx";
+import AboutMeSection from "../components/sections/AboutMeSection.tsx";
 ---
 
-<Layout title="Anthony">
+<Layout
+	title="Anthony"
+	description="Anthony's portfolio website."
+	bodyClass="bg-primary"
+>
 	<style>
 		.buffer-top {
 			top: calc(-50svh + 102px);
@@ -108,8 +112,8 @@ import SecondSection from "../components/sections/SecondSection.tsx";
 	<!-- Buffer so the scrolling works as intended -->
 	<div id="svh" class="h-svh"></div>
 	<ScrollIndicator client:idle />
-	<section id="second" class="relative h-screen bg-slate-600">
-		<SecondSection client:idle />
+	<section class="relative h-screen bg-red">
+		<AboutMeSection client:idle />
 	</section>
 	<section class="h-screen"></section>
 </Layout>
