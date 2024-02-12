@@ -130,6 +130,14 @@ if ((now.getMonth() !== 0 && now.getMonth() !== 1) || now.getDay() > 14) {
 				no.style.left = `${Math.random() * (width - (no.clientWidth + 64))}px`;
 			}
 		});
+		no?.addEventListener("click", () => {
+			if (height) {
+				no.style.top = `${Math.random() * (height - (no.clientHeight + 64))}px`;
+			}
+			if (width) {
+				no.style.left = `${Math.random() * (width - (no.clientWidth + 64))}px`;
+			}
+		});
 
 		function sleep(ms: number) {
 			return new Promise((resolve) => setTimeout(resolve, ms));
