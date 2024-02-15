@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  server:
+    build:
+      context: server
+      dockerfile: Dockerfile
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - "4321:4321" 
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root 
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    volumes: 
+      - mongodb_data:/data/db  
+volumes:
+  mongodb_data: 

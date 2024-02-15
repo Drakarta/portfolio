@@ -77,10 +77,10 @@ import AboutMeSection from "../components/sections/AboutMeSection.tsx";
 		const handleScroll = () => {
 			const element = document.getElementById("home");
 			// window.innerHeight on mobile changes when the menu is visible
+			// so we need to use the svh element to calculate the height
 			const smallHeight: any = document.getElementById("svh")?.clientHeight;
 			const iconHeight = window.innerWidth > 768 ? 204 : 148;
 			if (!element) return;
-
 			if (window.scrollY > window.innerHeight) {
 				element.classList.remove("fixed", "buffer-top");
 				element.classList.add("absolute");
@@ -112,7 +112,7 @@ import AboutMeSection from "../components/sections/AboutMeSection.tsx";
 	<!-- Buffer so the scrolling works as intended -->
 	<div id="svh" class="h-svh"></div>
 	<ScrollIndicator client:idle />
-	<section class="relative h-screen bg-red">
+	<section class="bg-red relative h-screen">
 		<AboutMeSection client:idle />
 	</section>
 	<section class="h-screen"></section>

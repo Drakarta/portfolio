@@ -4,7 +4,7 @@ import pengu from "../assets/pengu.png";
 import heart from "../assets/heart.png";
 
 const now = new Date();
-if ((now.getMonth() !== 0 && now.getMonth() !== 1) || now.getDay() > 14) {
+if (now.getMonth() !== 1 || now.getDay() > 14) {
 	return Astro.redirect("/404");
 }
 ---
