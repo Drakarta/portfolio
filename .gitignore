@@ -50,6 +50,11 @@ Cargo.lock
 **/*.rs.bk
 
 # MSVC Windows builds of rustc generate these, which store debugging information
-*.pdb
+*.pdb   
 
 .vscode
+.env
+
+# Added by cargo
+
+/target
