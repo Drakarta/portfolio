@@ -1,32 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useStore } from "@nanostores/react";
-import { $nameActive, $firstActivate } from "../resources/store.ts";
+import { $nameActive, $firstActivate } from "@/resources/store"
 
-import ant from "../assets/ant_flat.svg";
-import honey from "../assets/honey_pot_flat.svg";
+import ant from "@/assets/ant_flat.svg";
+import honey from "@/assets/honey_pot_flat.svg";
 
-let timout: NodeJS.Timeout;
+let timeout: ReturnType<typeof setTimeout>;
 
 export default function Anthoney() {
 	const nameActive = useStore($nameActive);
 
 	return (
 		<button
-			className="flex cursor-pointer font-bespoke text-9xl text-secondary"
+			className="flex font-bespoke text-9xl text-secondary cursor-pointer"
 			style={{
 				lineHeight: "normal",
 				letterSpacing: "-0.05em",
 			}}
 			onMouseEnter={() => {
 				$nameActive.set(true);
-				timout = setTimeout(() => {
+				timeout = setTimeout(() => {
 					$firstActivate.set(true);
 				}, 250);
 			}}
 			onMouseLeave={() => {
 				$nameActive.set(false);
-				clearTimeout(timout);
+				clearTimeout(timeout);
 			}}
 		>
 			<div className="flex overflow-hidden" style={{ paddingRight: "0.025em" }}>
@@ -36,7 +36,7 @@ export default function Anthoney() {
 					transition={{ duration: 0.5, ease: "easeInOut" }}
 				>
 					<img
-						className="mt-3 h-32 w-32"
+						className="mt-3 w-32 h-32"
 						style={{
 							maxWidth: "none",
 							filter: "drop-shadow(3px 3px 5px black)",
@@ -63,7 +63,7 @@ export default function Anthoney() {
 					transition={{ duration: 0.5, ease: "easeInOut" }}
 				>
 					<img
-						className="mt-3 h-32 w-32"
+						className="mt-3 w-32 h-32"
 						style={{
 							maxWidth: "none",
 							filter: "drop-shadow(3px 3px 5px black)",
@@ -81,7 +81,7 @@ export default function Anthoney() {
 					<div style={{ filter: "drop-shadow(3px 3px 5px black)" }}>hon</div>
 					<motion.div
 						style={{ filter: "drop-shadow(3px 3px 5px black)" }}
-						initial={false}
+						initial={{ width: "4rem", y: "8rem" }}
 						animate={
 							nameActive
 								? {

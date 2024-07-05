@@ -1,0 +1,19 @@
+---
+import HomeSectionDesktop from "./HomeSectionDesktop";
+import HomeSectionMobile from "./HomeSectionMobile";
+import ScrollIndicator from "./ScrollIndicator";
+
+---
+<>
+    <section id="home" class="fixed w-full">
+    <div class="hidden md:block">
+        <HomeSectionDesktop client:load />
+    </div>
+    <div class="block md:hidden">
+        <HomeSectionMobile client:load />
+    </div>
+    </section>
+    <!-- Buffer so the scrolling works as intended -->
+    <div id="svh" class="h-svh"></div>
+    <ScrollIndicator client:idle />
+</>

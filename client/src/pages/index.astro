@@ -1,9 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import HomeSection from "../components/sections/HomeSection.tsx";
-import HomeSectionMobile from "../components/sections/HomeSectionMobile.tsx";
-import ScrollIndicator from "../components/ScrollIndicator.tsx";
-import AboutMeSection from "../components/sections/AboutMeSection.tsx";
+import Layout from "@/layouts/Layout.astro";
+import HomeSection from "@/components/sections/home/HomeSection.astro";
+import AboutSection from "@/components/sections/about/AboutSection.tsx";
 ---
 
 <Layout
@@ -101,19 +99,9 @@ import AboutMeSection from "../components/sections/AboutMeSection.tsx";
 		window.addEventListener("touchstart", handleSwipeStart);
 		window.addEventListener("touchend", handleSwipeEnd);
 	</script>
-	<section id="home" class="fixed w-full">
-		<div class="hidden md:block">
-			<HomeSection client:load />
-		</div>
-		<div class="block md:hidden">
-			<HomeSectionMobile client:load />
-		</div>
-	</section>
-	<!-- Buffer so the scrolling works as intended -->
-	<div id="svh" class="h-svh"></div>
-	<ScrollIndicator client:idle />
+	<HomeSection />
 	<section class="relative h-screen bg-tetriary">
-		<AboutMeSection client:idle />
+		<AboutSection client:idle />
 	</section>
 	<section class="h-screen"></section>
 </Layout>

@@ -1,21 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useStore } from "@nanostores/react";
-import { $firstActivate, $nameActiveMobile } from "../../resources/store.ts";
+import { $firstActivate, $nameActiveMobile } from "@/resources/store";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
-import ant from "../../assets/ant_flat.svg";
-import honey from "../../assets/honey_pot_flat.svg";
+import ant from "@/assets/ant_flat.svg";
+import honey from "@/assets/honey_pot_flat.svg";
 
 export default function HomeSectionMobile() {
 	const nameActiveMobile = useStore($nameActiveMobile);
 	const firstActivate = useStore($firstActivate);
 
 	return (
-		<div className="flex h-svh flex-col items-center justify-center">
+		<div className="flex flex-col justify-center items-center h-svh">
 			<button
-				className="flex cursor-pointer justify-center"
+				className="flex justify-center cursor-pointer"
 				style={{ height: "148px" }}
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
@@ -29,20 +29,20 @@ export default function HomeSectionMobile() {
 				}}
 			>
 				<img
-					className="mt-3 aspect-square w-32"
+					className="mt-3 w-32 aspect-square"
 					style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 					src={ant.src}
 					alt="ant"
 				/>
 				<img
-					className="mt-3 aspect-square w-32"
+					className="mt-3 w-32 aspect-square"
 					style={{ filter: "drop-shadow(3px 3px 5px black)" }}
 					src={honey.src}
 					alt="honey_pot"
 				/>
 			</button>
 			<motion.div
-				className="pointer-events-none absolute col-start-2 row-start-6 mt-48 flex justify-center gap-4 font-sans text-lg text-tetriary"
+				className="absolute flex justify-center gap-4 col-start-2 row-start-6 mt-48 font-sans text-lg text-tetriary pointer-events-none"
 				style={{ filter: "drop-shadow(1px 1px 2px black)" }}
 				initial={false}
 				animate={firstActivate ? { opacity: 0 } : "initial"}
@@ -55,7 +55,7 @@ export default function HomeSectionMobile() {
 				onClick={() => {
 					$nameActiveMobile.set(!nameActiveMobile);
 				}}
-				className="absolute mt-52 flex max-h-20 w-fit cursor-pointer justify-center justify-self-center overflow-hidden px-1.5 font-bespoke text-6xl text-secondary"
+				className="absolute flex justify-center justify-self-center mt-52 px-1.5 w-fit max-h-20 font-bespoke text-6xl text-secondary cursor-pointer overflow-hidden"
 				style={{ lineHeight: "normal", letterSpacing: "-0.025em" }}
 				initial={{ height: "0px" }}
 				animate={nameActiveMobile ? { height: "auto" } : "initial"}
