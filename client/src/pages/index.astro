@@ -9,20 +9,6 @@ import AboutSection from "@/components/sections/about/AboutSection.tsx";
 	description="Anthony's portfolio website."
 	bodyClass="bg-primary"
 >
-	<style>
-		.buffer-top {
-			top: calc(-50svh + 102px);
-			@media (max-width: 768px) {
-				top: calc(-50svh + 74px);
-			}
-		}
-		.buffer-bottom {
-			top: calc(50svh - 102px);
-			@media (max-width: 768px) {
-				top: calc(50svh - 74px);
-			}
-		}
-	</style>
 	<script>
 		type ArrowKey = "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight";
 
@@ -72,29 +58,6 @@ import AboutSection from "@/components/sections/about/AboutSection.tsx";
 			}
 		};
 
-		const handleScroll = () => {
-			const element = document.getElementById("home");
-			// window.innerHeight on mobile changes when the menu is visible
-			// so we need to use the svh element to calculate the height
-			const smallHeight: any = document.getElementById("svh")?.clientHeight;
-			const iconHeight = window.innerWidth > 768 ? 204 : 148;
-			if (!element) return;
-			if (window.scrollY > window.innerHeight) {
-				element.classList.remove("fixed", "buffer-top");
-				element.classList.add("absolute");
-			} else if (window.scrollY > smallHeight - iconHeight) {
-				element.classList.remove("absolute", "buffer-bottom");
-				element.classList.add("fixed", "buffer-top");
-			} else if (window.scrollY > smallHeight * 0.5 - iconHeight / 2) {
-				element.classList.remove("fixed");
-				element.classList.add("absolute", "buffer-bottom");
-			} else {
-				element.classList.remove("absolute", "buffer-bottom", "buffer-top");
-				element.classList.add("fixed");
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("keydown", handleKeyPress);
 		window.addEventListener("touchstart", handleSwipeStart);
 		window.addEventListener("touchend", handleSwipeEnd);
